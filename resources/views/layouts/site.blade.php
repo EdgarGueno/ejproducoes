@@ -22,7 +22,7 @@
     @yield('content')
 
 
-<footer class="page-footer red" >
+<footer class="page-footer red darken-3;" >
   <div class="container">
     <div class="row">
       <div class="col l6 s12">
@@ -32,9 +32,9 @@
       <div class="col l4 offset-l2 s12">
         <h5 class="white-text">Links</h5>
         <ul>
-          <li><a class="grey-text text-lighten-3" href="#!">Home</a></li>
-          <li><a class="grey-text text-lighten-3" href="#!">Sobre</a></li>
-          <li><a class="grey-text text-lighten-3" href="#!"></a></li>
+          <li><a class="grey-text text-lighten-3" href="{{ route('site.home') }}">Home</a></li>
+          <li><a class="grey-text text-lighten-3" href="{{ route('site.sobre') }}">Sobre</a></li>
+          <li><a class="grey-text text-lighten-3" href="{{ route('site.contato') }}">Contato</a></li>
           
         </ul>
       </div>

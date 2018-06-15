@@ -24,9 +24,28 @@ Route::get('/contato',['as'=>'site.contato', function(){
 	return view('site.contato');
 }]);
 
+Route::get('/imovel/{id}/{titulo?}',['as'=>'site.imovel', function(){
+	return view('site.imovel');
+}]);
+
+Route::get('/admin/login',['as'=>'admin.login', function(){
+	return view('admin.login.index');
+}]);
+
+Route::post('/admin/login',['as'=>'admin.login', 'uses'=>'Admin\UsuarioController@login']);
+
+Route::group(['middleware' => 'require_auth'], function() { 
+
+	Route::get('/admin/login/sair',['as'=>'admin.login.sair', 'uses'=>'Admin\UsuarioController@sair']);
+	
+	Route::get('/admin',['as'=>'admin.principal', function(){
+		return view('admin.principal.index');	
+	}]);
+	Route::get('/admin/usuarios',['as'=>'admin.usuarios', 'uses'=>'Admin\UsuarioController@index']);
+
+	Route::get('/admin/usuarios/adicionar',['as'=>'admin.usuarios.adicionar', 'uses'=>'Admin\UsuarioController@adicionar']);
+
+	Route::post('/admin/usuarios/salvar',['as'=>'admin.usuarios.salvar', 'uses'=>'Admin\UsuarioController@salvar']);
+});
 
 
-
-Route::auth();
-
-Route::get('/home', 'HomeController@index');
